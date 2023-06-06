@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { Country, State, City } from "country-state-city";
 import Select from "react-select";
 import swal from 'sweetalert';
-import * as Yup from "yup";
-import { Formik } from "formik";
+// import * as Yup from "yup";
+// import { Formik } from "formik";
 
 const Registration = () => {
   const [gender, setGender] = useState("");
@@ -22,12 +22,12 @@ const Registration = () => {
   const [selectedCity, setSelectedCity] = useState(null);
   const navigate = useNavigate();
 
-  const validationSchema = Yup.object({
-    first_name: Yup.string().trim().required("Name is required"),
+//   const validationSchema = Yup.object({
+//     first_name: Yup.string().trim().required("Name is required"),
     
-    last_name: Yup.string().trim().required(" last Name is required"),
-    email: Yup.string().email("Invalid email").required("Required"),
-  })
+//     last_name: Yup.string().trim().required(" last Name is required"),
+//     email: Yup.string().email("Invalid email").required("Required"),
+//   })
 
 
   useEffect(() => {
@@ -142,13 +142,7 @@ const Registration = () => {
             <label for="validationDefault04" class="form-label">
               Country
             </label>
-            {/* <select
-              class="form-select"
-              name="country"
-              value={data.country}
-              onChange={handleChangeInput}
-              required
-            > */}
+           
              <Select
         options={Country.getAllCountries()}
         getOptionLabel={(options) => {
@@ -162,11 +156,7 @@ const Registration = () => {
           setSelectedCountry(item);
         }}
       />
-              {/* <option selected disabled value="">
-                Choose...
-              </option>
-              <option>India</option>
-            </select> */}
+             
           </div>
           <div class="col-md-3" style={{width:"100%"}}>
             <label class="form-label">State</label>
@@ -183,33 +173,11 @@ const Registration = () => {
           setSelectedState(item);
         }}
       />
-            {/* <select
-              class="form-select"
-              name="state"
-              value={data.state}
-              onChange={handleChangeInput}
-              required
-            >
-              <option selected disabled value="">
-                Choose...
-              </option>
-              <option>Uttar Pradesh</option>
-            </select> */}
+          
           </div>
           <div class="col-md-3" style={{width:"100%"}}>
             <label class="form-label">City</label>
-            {/* <select
-              class="form-select"
-              name="city"
-              value={data.city}
-              onChange={handleChangeInput}
-              required
-            >
-              <option selected disabled value="">
-                Choose...
-              </option>
-              <option>Allahabad</option>
-            </select> */}
+        
 
             <Select 
         options={City.getCitiesOfState(
@@ -254,7 +222,7 @@ const Registration = () => {
             value={data.date_of_birth}
             placeholder="date of birth"
             onChange={handleChangeInput}
-            // onChange={(e) => setSelectedDate(e.target.value)}
+          
             
           />
           <p
