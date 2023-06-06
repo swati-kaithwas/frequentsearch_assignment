@@ -82,9 +82,18 @@ const Registration = () => {
   }, [selectedCountry,selectedState,selectedCity]);
 
 
+  function handleKeyPress(event) {
+    const charCode = event.which ? event.which : event.keyCode;
+    const char = String.fromCharCode(charCode);
+    const regex = /^[A-Za-z]+$/;
+    if (!regex.test(char)) {
+      event.preventDefault();
+    }
+  }
+
   const handleFormSubmit = () => {
     if (validation) {
-      axios.post("http://localhost:3001/users/registation", data)
+      axios.post("https://frequentsearch-assignment.onrender.com/users/registation", data)
       .then((res)=>{
         if(res.data.success){
         swal(`${res.data.message}`)
@@ -113,6 +122,7 @@ const Registration = () => {
               class="form-control"
               name="first_name"
               value={data?.first_name}
+              onKeyPress={handleKeyPress}
               onChange={handleChangeInput}
             />
           </div>
@@ -124,6 +134,7 @@ const Registration = () => {
               name="last_name"
               class="form-control"
               value={data.last_name}
+              onKeyPress={handleKeyPress}
               onChange={handleChangeInput}
               required
             />
@@ -136,6 +147,7 @@ const Registration = () => {
               name="email"
               value={data?.email}
               onChange={handleChangeInput}
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             />
           </div>
           <div class="col-md-3" style={{width:"100%"}}>

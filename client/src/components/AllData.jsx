@@ -7,7 +7,7 @@ const AllData = () => {
       }, []);
     const fetchData = async () => {
         try {
-          const response = await fetch("http://localhost:3001/users/getAllData");
+          const response = await fetch("https://frequentsearch-assignment.onrender.com/users/getAllData");
           const json = await response.json();
           console.log("data", json.data);
     
